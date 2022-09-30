@@ -29,11 +29,14 @@ function enterWord() {
     // get the current array and write if statements to do 
     const wordArray = getCurrentArray()
     console.log(wordArray);
+    console.log(secretWord);
     const currentWord = wordArray.join('')
-     
-    if (!secretWord.includes(currentWord)){
+    if (!wordle.includes(currentWord)){
         console.log(secretWord, currentWord);
         alert("Word doesn't exist, delete and type again");
+    }
+    if (wordle.includes(currentWord)){
+        colorAdd()
     }
     if (wordArray.length !== 5) {
         console.log(guessWord);
@@ -41,14 +44,37 @@ function enterWord() {
     }
   
     console.log(currentWord);
-    if (currentWord == secretWord){
-        window.alert (`Congratulations Mate!!`)
+    if (currentWord === secretWord){
+        window.alert (`Congratulations!!`)
     }
     if (guessWord.length === 6){
         alert(`You ran out of guesses. Word is ${secretWord}`)
     }
+    console.log(colorAdd("troll", "tents"));
+    
     guessWord.push([])
 }
+// color function 
+function colorAdd(guess, solution){
+    let r = []
+    for (let i = 0; i < guess.length; i++){
+        let guessLetter = guess.charAt(i)
+        let solutionLetter = solution.charAt(i)
+        console.log(guessLetter, solutionLetter);
+        if (guessLetter === solutionLetter){
+            r.push('Green')
+            
+
+        }else if (solution.indexOf(guessLetter)!=-1){
+            r.push('Yellow')
+        }
+        else {
+            r.push("Grey")
+        }
+    }
+    return r 
+}
+
 
 function delWord(){
     const wordArray = getCurrentArray()
@@ -89,8 +115,10 @@ for (let i = 0; i < keyboardKeys.length; i++){
 // gets the current array thats updating
 function getCurrentArray(){
     // gives you the current row number of the array
-    const currentGuessedWords = guessWord.length
-    // console.log(currentGuessedWords);
+    const currentGuessedWords = guessWord.length 
+    console.log(currentGuessedWords);
+    // -1 because array length starts with index 0
+    console.log(guessWord[currentGuessedWords - 1]);
     return guessWord[currentGuessedWords - 1]
      
 }
