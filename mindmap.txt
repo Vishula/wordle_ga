@@ -1,0 +1,10 @@
+you have a secret word with 5 letters 
+you ask user to enter a word with 5 letters. User has to guess the word and has 6 tries.
+[_ _ _ _ _] == secret word {user win}
+[_ _ _ _ _] != secret word but matching letters [highligh the letters in green if they 
+are correct and yellow they are somewhere else in the word and grey, letters not in the word]
+Game has 5x6 tiles 
+Has keyboard functionality 
+Remember wins and rounds played 
+Settings button to customize the Game UI 
+Share button to share scores easily 
