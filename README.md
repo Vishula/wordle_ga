@@ -1,8 +1,10 @@
 # wordle_ga
-Wordle using HTML,CSS and JS
-[link to my Wordle](https://student.github.io/wordle)
-## Workplan 
-Here is a simple wordle game. 
+Here is a simple wordle game using HTML,CSS and JS  
+
+
+[link to my Wordle](https://vishula.github.io/wordle_ga/)
+ 
+
 
 ## Issues 
 Unfortunately I wasn't able to figure out how to color the boxes accordingly. I had trouble identifying the box ID to apply css styles. 
