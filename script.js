@@ -6,15 +6,16 @@ setupKeyboard()
 function enterWord() {
     // get the current array and write if statements to do 
     const wordArray = getCurrentArray()
-
+    console.log(wordArray);
     const currentWord = wordArray.join('')
     if (!wordle.includes(currentWord)) {
         // console.log(secretWord, currentWord);
         alert("Word doesn't exist, delete and type again")
+        return //early exit 
     }
-
+   
     // current word and secret word 
-    for (let i = 0; i < currentWord.length; i++) {
+    for (let i = 0; i < 5; i++) {
         let userGuess = currentWord.charAt(i)
         let secretGuess = secretWord.charAt(i)
         const idOfMatchingLetters = (getTitleID) + 1
@@ -116,16 +117,6 @@ function delWord() {
 }
 
 
-// gets the current array thats updating
-function getCurrentArray() {
-    // gives you the current row number of the array
-    const currentGuessedWords = guessWord.length
-    // console.log(currentGuessedWords);
-    // -1 because array length starts with index 0
-    return guessWord[currentGuessedWords - 1]
-
-}
-getCurrentArray()
 
 // update the box with letters
 function updateBoxWords(key) {
