@@ -1,66 +1,42 @@
-// Array that has all the words and inside that array each word will be an array
-// that contains each letter
-let guessWord = [[]]
-let getTitleID = 0; 
-console.log(guessWord);  
-// box to start 
-let spaceOfBox = 1
-// const secretWord = 'weeks'
-console.log(wordle);
-
-
-let secretWord = wordle[Math.floor(Math.random() * wordle.length)]
-console.log("Answer: ", secretWord);
-
-function createBoxes(){
-// create gameboard 
-const gameBoard = document.getElementById('game-board')
-for (let box = 0; box <30; box++){
-    let boxes = document.createElement('div')
-    boxes.classList.add('square')
-    boxes.setAttribute('id', box + 1)
-    // boxes.innerHTML = '@'
-    gameBoard.append(boxes)
-}  
-}
 createBoxes()
+setupKeyboard()
 
 // when hit enter key it should enter the word and move to next row if it has 5 letters in the word
- 
+
 function enterWord() {
     // get the current array and write if statements to do 
     const wordArray = getCurrentArray()
-    
+
     const currentWord = wordArray.join('')
-    if (!wordle.includes(currentWord)){
-        console.log(secretWord, currentWord);
+    if (!wordle.includes(currentWord)) {
+        // console.log(secretWord, currentWord);
         alert("Word doesn't exist, delete and type again")
     }
-   
+
     // current word and secret word 
-    for (let i = 0; i < currentWord.length; i++){
+    for (let i = 0; i < currentWord.length; i++) {
         let userGuess = currentWord.charAt(i)
         let secretGuess = secretWord.charAt(i)
-        const idOfMatchingLetters = (getTitleID * 5) + 1 
-        
-        if (userGuess === secretGuess){
-            wordArray.map((char, index)=> {
-                setTimeout(function colors (){
+        const idOfMatchingLetters = (getTitleID) + 1
+
+        if (userGuess === secretGuess) {
+            wordArray.map((char, index) => {
+                setTimeout(function colors() {
                     // get id of specific box
-                    const idofLetter = idOfMatchingLetters + index 
+                    const idofLetter = idOfMatchingLetters + index
                     // const elofLetter = document.getElementById(idofLetter).style.backgroundColor = 'green'
-                    
+
                 })
             })
             // get current tile element ID and set its background to green 
-        }else if (currentWord.indexOf(guessWord)!=-1){
+        } else if (currentWord.indexOf(guessWord) != -1) {
             // current tiles to yellow 
-        }else {
+        } else {
             // tiles to grey 
         }
-        
 
-          
+
+
     }
 
     // }
@@ -69,33 +45,33 @@ function enterWord() {
         // add code to initalize the current array and remove all the letters from the square boxes
         // currentWord.length = 0
         alert("Enter a 5 letter word and try again")
-        
+
     }
-  
-     
-    if (currentWord === secretWord){
-        window.alert (`Congratulations!!`)
+
+
+    if (currentWord === secretWord) {
+        window.alert(`Congratulations!!`)
         console.log(secretWord, currentWord);
-        const idOfMatchingLetters = (getTitleID * 5) + 1 
+        const idOfMatchingLetters = (getTitleID) + 1
         wordArray.map((character, index) => {
-             setTimeout(function colors(){
+            setTimeout(function colors() {
                 // const colorOfTiles = colorAdd(character, index)
                 // this gives ID of each specific box 
                 const idOfLetter = idOfMatchingLetters + index
                 // get element and apply grey to background
                 const elOfLetter = document.getElementById(idOfLetter).style.backgroundColor = 'green'
-                })
+            })
         })
-        
-         
-        
-        
+
+
+
+
     }
-    if (guessWord.length === 6){
+    if (guessWord.length === 6) {
         alert(`You ran out of guesses. Word is ${secretWord}`)
     }
-    
-    
+
+
     guessWord.push([])
 }
 // color function 
@@ -111,7 +87,7 @@ function enterWord() {
 //         if (userGuessed === secretWordLetter){
 //             r.push('Green')
 
-            
+
 
 //         }else if (solution.indexOf(userGuessed)!=-1){
 //             r.push('Yellow')
@@ -124,7 +100,7 @@ function enterWord() {
 // }
 
 
-function delWord(){
+function delWord() {
     const wordArray = getCurrentArray()
     wordArray.pop()
 
@@ -134,88 +110,34 @@ function delWord(){
     spaceOfBox = spaceOfBox - 1
     console.log(currentBoxEl);
     console.log(spaceOfBox);
-     
+
 
 
 }
-const keyboardKeys = document.querySelectorAll('.row button')
-for (let i = 0; i < keyboardKeys.length; i++){
-    keyboardKeys[i].onclick = ({target}) => {
-        const key = target.getAttribute('data-key')
-        // console.log(key);
 
-        if (key === 'enter'){
-            enterWord()
-            return
-        }
-        if (key === 'del'){
-            delWord()
-            // output.textContent = output.textContent.slice(0, output.textContent.length-1);
-
-            return
-        }
-        updateBoxWords(key)
-
-
-    }
-}
 
 // gets the current array thats updating
-function getCurrentArray(){
+function getCurrentArray() {
     // gives you the current row number of the array
-    const currentGuessedWords = guessWord.length 
-    console.log(currentGuessedWords);
+    const currentGuessedWords = guessWord.length
+    // console.log(currentGuessedWords);
     // -1 because array length starts with index 0
     return guessWord[currentGuessedWords - 1]
-     
+
 }
 getCurrentArray()
 
 // update the box with letters
 function updateBoxWords(key) {
     const currentBox = getCurrentArray()
-    if (currentBox && currentBox.length < 5){
+    if (currentBox && currentBox.length < 5) {
         currentBox.push(key)
         // gets the box with id 1 
         const boxSpace = document.getElementById(String(spaceOfBox))
         spaceOfBox = spaceOfBox + 1;
         boxSpace.textContent = key
     }
-    
+
 }
- 
 
 
-// // When you press the keyboard it will append it to the square boxes
-// function letterInsert(){
-//     // get keyboard from HTML 
-//     const squaresOutput = document.getElementsByClassName ('square')
-//     const keyboard = document.getElementsByClassName('key')
-     
-//     for (let square of squaresOutput){
-//         console.log(square);
-//         for (let key of keyboard){
-//             console.log(key);
-//             let keyElement = key.textContent
-//             key.addEventListener('click', function(){
-//                 switch (key) {
-//                     case '␡':
-//                         output.textContent = output.textContent.slice(0, output.textContent.length-1);
-//                         break;
-//                     case '␡ all':
-//                         output.textContent = '';
-//                         break;
-//                     default:
-//                         }
-                     
-//             })
-//         }
-
-//     }
-    
-
-// }
-
-// letterInsert()
-
- 
