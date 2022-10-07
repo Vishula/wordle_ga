@@ -8,7 +8,7 @@ function enterWord() {
 
     // join the array together
     const currentWord = wordArray.join('')
-    
+
     if (!wordle.includes(currentWord) && wordArray.length !== 5) {
         // console.log(secretWord, currentWord);
         alert("Word doesn't exist, delete and type again")
@@ -67,6 +67,7 @@ function tilteColors(letter, index) {
         return 'rgb(83, 141, 78)'
     } else {
         return 'rgb(181, 159, 59)'
+        // 'rgb(181, 159, 59)'
     }
 
 }

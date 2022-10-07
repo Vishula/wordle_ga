@@ -4,11 +4,11 @@ let guessWord = [[]] //matrix
 // to find out which tile it is on
 let getTitleID = 0;
 console.log(guessWord);
-// box to start 
+// when letter is chocen, iterates through Id's
 let spaceOfBox = 1
 // const secretWord = 'weeks'
  
-let currentRow = 0
+ 
 
 
 let secretWord = wordle[Math.floor(Math.random() * wordle.length)]
@@ -16,11 +16,14 @@ console.log("Answer: ", secretWord);
 
 
 // gets the current array thats updating
-function getCurrentArray() {
-    // gives you the current row number of the array
-    // const currentGuessedWords = guessWord.length
-    // console.log(currentGuessedWords);
-    // -1 because array length starts with index 0
-    return guessWord[currentRow]
+// function getCurrentArray() {
+//     // gives you the current row number of the array
+//     // const currentGuessedWords = guessWord.length
+//     // console.log(currentGuessedWords);
+//     // -1 because array length starts with index 0
+//     return guessWord[currentRow]
 
+// }
+function getCurrentArray() {
+    return guessWord[(guessWord.length) -1 ]
 }
