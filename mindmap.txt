@@ -8,3 +8,4 @@ Has keyboard functionality
 Remember wins and rounds played 
 Settings button to customize the Game UI 
 Share button to share scores easily 
+
