@@ -1,16 +1,15 @@
 // Array that has all the words and inside that array each word will be an array
 // that contains each letter
 let guessWord = [[]] //matrix 
+// to find out which tile it is on
 let getTitleID = 0;
 console.log(guessWord);
 // box to start 
 let spaceOfBox = 1
 // const secretWord = 'weeks'
-// console.log(wordle);
+ 
 let currentRow = 0
 
-// user = diary
-// secret = ['a', 'p', 'p', 'l', 'e']
 
 let secretWord = wordle[Math.floor(Math.random() * wordle.length)]
 console.log("Answer: ", secretWord);
