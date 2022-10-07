@@ -18,27 +18,26 @@ function enterWord() {
 
     else {
         guessWord.push([])
-        // flip animation 
-        const timeInterval = 150 
+    
         //  get the position of the first letter [id]  
-        const firstLetterOfId = getTitleID * 5 + 1 
+        const firstLetterOfId = getTitleID * 5 + 1
 
         // animation for gameboard. 
-        wordArray.map((letter, index) => {
+        wordArray.forEach((letter, index) => {
             setTimeout(() => {
                 const tileColor = tilteColors(letter, index)
                 const letterId = firstLetterOfId + index 
                 const getElementOfLetter = document.getElementById(letterId)
-                getElementOfLetter.classList.add()
+                getElementOfLetter.classList.add('animate__flipOutX')
                 getElementOfLetter.style = `background-color:${tileColor}; border-color:${tileColor}`
             })
         })
-        // update word count 
+        // update guess word count 
         getTitleID = getTitleID + 1 
 
         if (currentWord === secretWord) {
             window.alert(`Congratulations!!`)
-            // console.log(secretWord, currentWord);
+            
         }
         if (guessWord.length === 7) {
             alert(`You ran out of guesses. Word is ${secretWord}`)
@@ -47,28 +46,25 @@ function enterWord() {
     }
     
 }
-
+// code from ian lenehan youtube account was used to get the logic to work 
 function tilteColors(letter, index) {
     const wordArray = getCurrentArray()
     const correctLetterIndex = wordArray.includes(letter)
 
     // letter doesn't exist in the secret word. Turn it to grey
     if (!correctLetterIndex) {
-        return 'rgba(58, 58, 60)'
+        return ('rgba(58, 58, 60)')
     }
-
-    // code from ian lenehan youtube account. 
     
     const letterIndex = secretWord.charAt(index)
-    console.log(letterIndex);
-    const correctPosition = letter == letterIndex
+    // console.log(letterIndex);
+    const correctPosition = letter === letterIndex
     
+    // if the letter is in the correct position 
     if (correctPosition) {
-        return 'rgb(83, 141, 78)'
+        return ('rgba(83, 141, 78)')
     } else {
-        return 'rgb(181, 159, 59)'
-        // 'rgb(181, 159, 59)'
+        return ('rgba(181, 159, 59)')  
     }
-
 }
 

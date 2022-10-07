@@ -41,8 +41,6 @@ function setupKeyboard() {
             }
             if (key === 'del') {
                 delWord()
-                // output.textContent = output.textContent.slice(0, output.textContent.length-1);
-
                 return
             }
             updateBoxWords(key)
