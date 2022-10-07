@@ -1,6 +1,28 @@
 createBoxes()
 setupKeyboard()
 
+function tilteColors(letter, index) {
+    // code from ian lenehan youtube account was used to get the logic to work 
+    const correctLetterIndex = secretWord.includes(letter)
+
+    // letter doesn't exist in the secret word. Turn it to grey
+    if (!correctLetterIndex) {
+        return 'rgba(58, 58, 60)'
+    }
+    
+    const letterIndex = secretWord.charAt(index)
+    // console.log(letterIndex);
+    const correctPosition = letter === letterIndex
+    
+    // if the letter is in the correct position 
+    if (correctPosition) {
+        return 'rgba(83, 141, 78)'
+    } else {
+        return 'rgba(181, 159, 59)'
+    }
+}
+
+
 // when hit enter key it should enter the word and move to next row if it has 5 letters in the word
 function enterWord() {
     // get the current array and write if statements to do 
@@ -18,12 +40,12 @@ function enterWord() {
 
     else {
         guessWord.push([])
-    
+        
         //  get the position of the first letter [id]  
         const firstLetterOfId = getTitleID * 5 + 1
 
         // animation for gameboard. 
-        wordArray.forEach((letter, index) => {
+        wordArray.map((letter, index) => {
             setTimeout(() => {
                 const tileColor = tilteColors(letter, index)
                 const letterId = firstLetterOfId + index 
@@ -46,25 +68,3 @@ function enterWord() {
     }
     
 }
-// code from ian lenehan youtube account was used to get the logic to work 
-function tilteColors(letter, index) {
-    const wordArray = getCurrentArray()
-    const correctLetterIndex = wordArray.includes(letter)
-
-    // letter doesn't exist in the secret word. Turn it to grey
-    if (!correctLetterIndex) {
-        return ('rgba(58, 58, 60)')
-    }
-    
-    const letterIndex = secretWord.charAt(index)
-    // console.log(letterIndex);
-    const correctPosition = letter === letterIndex
-    
-    // if the letter is in the correct position 
-    if (correctPosition) {
-        return ('rgba(83, 141, 78)')
-    } else {
-        return ('rgba(181, 159, 59)')  
-    }
-}
-

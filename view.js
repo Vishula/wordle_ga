@@ -1,5 +1,5 @@
+// create gameboard 
 function createBoxes() {
-    // create gameboard 
     const gameBoard = document.getElementById('game-board')
     for (let box = 0; box < 30; box++) {
         let boxes = document.createElement('div')
